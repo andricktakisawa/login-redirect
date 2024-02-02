@@ -4,7 +4,7 @@ include '../settings/conn.php';
 
 $users = [
     ['name' => 'Andrick Takisawa', 'email' => 'andrick@incote.click', 'password' => 'admin'],
-    ['name' => 'José Rivera', 'email' => 'jriver@cwa.mx', 'password' => 'admin'],
+    ['name' => 'José Rivera', 'email' => 'jrivera@cwa.mx', 'password' => 'admin'],
 ];
 
 foreach ($users as $user) {
