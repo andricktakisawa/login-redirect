@@ -19,14 +19,14 @@ try {
     die("Error: " . $e->getMessage());
 }
 
-$registerNumbers = 40;
+$registerNumbers = 50;
 
 for ($i = 0; $i < $registerNumbers; $i++) {
     $name = $faker->name;
     $email = $faker->unique()->email;
     $password = 'TuMedic2024**';
     $curp = $faker->regexify('[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}');
-    $platformUrl = $faker->firstName . '.tumedic.mx';
+    $platformUrl = 'https://' . $faker->firstName . '.tumedic.mx';
 
     // Inserta los datos en la base de datos
     $stmt = $pdo->prepare("INSERT INTO customers (name, email, password, curp, platform_url) VALUES (?, ?, ?, ?, ?)");

@@ -3,6 +3,8 @@ include '../settings/conn.php';
 
 session_start();
 
+$errors = array();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -21,12 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $stored_hashed_password)) {
             session_start();
             $_SESSION["email"] = $email;
-            header("location: dashboard.php");
+            echo json_encode(array('success' => true, header("location: dashboard.php")));
         } else {
-            echo "Credenciales incorrectas";
+            $errors['login'] = "La contraseña ingresada es incorrecta";
+            echo json_encode(array('success' => false, 'errors' => $errors));
         }
     } else {
-        echo "Usuario no encontrado";
+        $errors['login'] = "Usuario no existente";
+        echo json_encode(array('success' => false, 'errors' => $errors));
     }
 }
 
